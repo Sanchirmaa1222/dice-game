@@ -1,11 +1,19 @@
-// Тоглогчийн ээлжийг хадгалах хувьсагч, нэгдүгээр тоглогчийг 0, хоёрдугаар тоглогчийг 1 гэж тэмдэглэе.
-var activePlayer = 0;
+var activePlayer;
+var scores;
+var roundScore;
+
+var diceDom = document.querySelector(".dice");
+
+initGame();
+
+function initGame(){
+activePlayer = 0;
 
 // Тоглогчдын цуглуулсан оноог хадгалах хувьсагч
-var scores = [0, 0];
+scores = [0, 0];
 
 // Тоглогчийн ээлжиндээ цуглуулж байгаа оноог хадгалах хувьсагч
-var roundScore = 0;
+roundScore = 0;
 
 // Шооны аль талаараа буусныг хадгалах хувьсагч хэрэгтэй, 1-6 гэсэн утгыг энэ хувьсагчид санамсаргүйгээр үүсгэж өгнө.
 
@@ -15,8 +23,19 @@ document.getElementById("score-1").textContent = "0";
 document.getElementById("current-0").textContent = "0";
 document.getElementById("current-1").textContent = "0";
 
-var diceDom = document.querySelector(".dice");
+document.getElementById("name-0").textContent = "Player 1";
+document.getElementById("name-1").textContent = "Player 2";
+
+document.querySelector(".player-0-panel" ).classList.remove("winner");
+document.querySelector(".player-1-panel" ).classList.remove("winner");
+
+document.querySelector(".player-0-panel" ).classList.remove("active");
+document.querySelector(".player-1-panel" ).classList.remove("active");
+
+document.querySelector(".player-0-panel" ).classList.add("active");
+
 diceDom.style.display = "none";
+  }
 
 // Шоог шидэх эвент листенер
 document.querySelector(".btn-roll").addEventListener("click", function() {
@@ -72,13 +91,7 @@ roundScore = 0;
         // Шоог түр алга болгоно.
         diceDom.style.display = "none";
     }
-document.querySelector(".btn-new").function () ;{
-    var activePlayer = 0;
+document.querySelector(".btn-new").addEventListener("click", initGame);
+// Тоглогчийн ээлжийг хадгалах хувьсагч, нэгдүгээр тоглогчийг 0, хоёрдугаар тоглогчийг 1 гэж тэмдэглэе.
 
-// Тоглогчдын цуглуулсан оноог хадгалах хувьсагч
-var scores = [0, 0];
-
-// Тоглогчийн ээлжиндээ цуглуулж байгаа оноог хадгалах хувьсагч
-var roundScore = 0;
-  };
     
