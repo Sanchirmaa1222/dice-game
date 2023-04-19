@@ -35,39 +35,50 @@ document.querySelector(".btn-roll").addEventListener("click", function() {
     roundScore = roundScore + diceNumber;
     document.getElementById("current-" + activePlayer).textContent = roundScore;
   } else {
-    // 1 буусан тул тоглогчийн ээлжийг энэ хэсэгт сольж өгнө.
+        switchToNextPlayer();
+    }
+}); 
+document.querySelector(".btn-hold").addEventListener("click", function(){
+    scores[activePlayer] = scores[activePlayer] + roundScore;
 
-    // Энэ тоглогчийн ээлжиндээ цуглуулсан оноог 0 болгоно.
-    roundScore = 0;
-    document.getElementById("current-" + activePlayer).textContent = 0;
+    document.getElementById("score-" + activePlayer).textContent = scores[activePlayer];
 
-    // Тоглогчийн ээлжийг нөгөө тоглогч руу шилжүүлнэ.
-    // Хэрэв идэвхтэй  тоглогч нь  0 байвал идэвхтэй тоглогчийг 1 болго.
-    // Үгүй бол идэвхтэй тоглогчийг 0 болго.
-    activePlayer === 0 ? (activePlayer = 1) : (activePlayer = 0);
+    if(scores[activePlayer] >=20){
+        document.getElementById("name-" + activePlayer).textContent = "WINNER!!!";
+        document.querySelector(".player-"+activePlayer+"-panel").classList.add("winner");
+        document.querySelector(".player-"+activePlayer+"-panel").classList.remove("active");
+    }
+    else{
+        switchToNextPlayer();
+    }
 
-    // var obj = {
-    //   name: "amaraa",
-    //   job: "programmer",
-    //   address: {
-    //     city: "ub",
-    //     country: "mn"
-    //   }
-    // };
+})
 
-    // obj.address.country;
+function switchToNextPlayer(){
+roundScore = 0;
+        document.getElementById("current-" + activePlayer).textContent = 0;
 
-    // Улаан цэгийг шилжүүлэх
-    document.querySelector(".player-0-panel").classList.toggle("active");
-    document.querySelector(".player-1-panel").classList.toggle("active");
+        // Тоглогчийн ээлжийг нөгөө тоглогч руу шилжүүлнэ.
+        // Хэрэв идэвхтэй  тоглогч нь  0 байвал идэвхтэй тоглогчийг 1 болго.
+        // Үгүй бол идэвхтэй тоглогчийг 0 болго.
+        activePlayer === 0 ? (activePlayer = 1) : (activePlayer = 0);
 
-    // Шоог түр алга болгоно.
-    diceDom.style.display = "none";
+        // obj.address.country;
 
-    // if (activePlayer === 0) {
-    //   activePlayer = 1;
-    // } else {
-    //   activePlayer = 0;
-    // }
-  }
-});
+        // Улаан цэгийг шилжүүлэх
+        document.querySelector(".player-0-panel").classList.toggle("active");
+        document.querySelector(".player-1-panel").classList.toggle("active");
+
+        // Шоог түр алга болгоно.
+        diceDom.style.display = "none";
+    }
+document.querySelector(".btn-new").function () ;{
+    var activePlayer = 0;
+
+// Тоглогчдын цуглуулсан оноог хадгалах хувьсагч
+var scores = [0, 0];
+
+// Тоглогчийн ээлжиндээ цуглуулж байгаа оноог хадгалах хувьсагч
+var roundScore = 0;
+  };
+    
