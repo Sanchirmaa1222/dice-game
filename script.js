@@ -1,6 +1,7 @@
 var activePlayer;
 var scores;
 var roundScore;
+var isNewGame;
 
 var diceDom = document.querySelector(".dice");
 
@@ -8,7 +9,7 @@ initGame();
 
 function initGame(){
 activePlayer = 0;
-
+isNewGame = true;
 // Тоглогчдын цуглуулсан оноог хадгалах хувьсагч
 scores = [0, 0];
 
@@ -40,7 +41,8 @@ diceDom.style.display = "none";
 // Шоог шидэх эвент листенер
 document.querySelector(".btn-roll").addEventListener("click", function() {
   // 1 - 6 доторх санамсаргүй нэг тоо гаргаж авна
-  var diceNumber = Math.floor(Math.random() * 6) + 1;
+  if (isNewGame){
+    var diceNumber = Math.floor(Math.random() * 6) + 1;
 
   // Шооны зургийг вэб дээр гаргаж ирнэ.
   diceDom.style.display = "block";
@@ -56,13 +58,19 @@ document.querySelector(".btn-roll").addEventListener("click", function() {
   } else {
         switchToNextPlayer();
     }
+  }
+  else{
+    alert("GAME IS OVER, PLEASE START NEW GAME")
+  }
 }); 
 document.querySelector(".btn-hold").addEventListener("click", function(){
+if(isNewGame){
     scores[activePlayer] = scores[activePlayer] + roundScore;
 
     document.getElementById("score-" + activePlayer).textContent = scores[activePlayer];
 
     if(scores[activePlayer] >=20){
+        isNewGame = false;
         document.getElementById("name-" + activePlayer).textContent = "WINNER!!!";
         document.querySelector(".player-"+activePlayer+"-panel").classList.add("winner");
         document.querySelector(".player-"+activePlayer+"-panel").classList.remove("active");
@@ -70,7 +78,11 @@ document.querySelector(".btn-hold").addEventListener("click", function(){
     else{
         switchToNextPlayer();
     }
-
+}
+else{
+    alert("GAME IS OVER, PLEASE START NEW GAME")
+}
+    
 })
 
 function switchToNextPlayer(){
