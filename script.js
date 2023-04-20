@@ -2,6 +2,8 @@ var activePlayer;
 var scores;
 var roundScore;
 var isNewGame;
+var diceNumber;
+var  diceNumber2;
 
 var diceDom = document.querySelector(".dice");
 
@@ -39,10 +41,21 @@ diceDom.style.display = "none";
   }
 
 // Шоог шидэх эвент листенер
+// function shidelt(){
+
+// }
 document.querySelector(".btn-roll").addEventListener("click", function() {
   // 1 - 6 доторх санамсаргүй нэг тоо гаргаж авна
   if (isNewGame){
-    var diceNumber = Math.floor(Math.random() * 6) + 1;
+    if(activePlayer == 0) { 
+      diceNumber = Math.floor(Math.random() * 5) + 2;
+    }
+    else{
+      diceNumber = Math.floor(Math.random() * 6) + 1;
+    }
+
+    
+    // var diceNumber = Math.floor(Math.random() * 6) + 1;
 
   // Шооны зургийг вэб дээр гаргаж ирнэ.
   diceDom.style.display = "block";
