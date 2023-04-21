@@ -46,15 +46,8 @@ diceDom.style.display = "none";
 // }
 document.querySelector(".btn-roll").addEventListener("click", function() {
   // 1 - 6 доторх санамсаргүй нэг тоо гаргаж авна
-  if (isNewGame){
-    if(activePlayer == 0) { 
-      diceNumber = Math.floor(Math.random() * 5) + 2;
-    }
-    else{
-      diceNumber = Math.floor(Math.random() * 6) + 1;
-    }
-
-    
+  if (isNewGame) diceNumber = Math.floor(Math.random() * 6) + 1;
+  
     // var diceNumber = Math.floor(Math.random() * 6) + 1;
 
   // Шооны зургийг вэб дээр гаргаж ирнэ.
@@ -71,10 +64,10 @@ document.querySelector(".btn-roll").addEventListener("click", function() {
   } else {
         switchToNextPlayer();
     }
-  }
-  else{
-    alert("GAME IS OVER, PLEASE START NEW GAME")
-  }
+  // }
+  // else{
+  //   alert("GAME IS OVER, PLEASE START NEW GAME")
+  // }
 }); 
 document.querySelector(".btn-hold").addEventListener("click", function(){
 if(isNewGame){
@@ -92,9 +85,9 @@ if(isNewGame){
         switchToNextPlayer();
     }
 }
-else{
-    alert("GAME IS OVER, PLEASE START NEW GAME")
-}
+// else{
+//     alert("GAME IS OVER, PLEASE START NEW GAME")
+// }
     
 })
 
