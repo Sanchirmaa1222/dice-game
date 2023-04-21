@@ -26,8 +26,8 @@ document.getElementById("score-1").textContent = "0";
 document.getElementById("current-0").textContent = "0";
 document.getElementById("current-1").textContent = "0";
 
-document.getElementById("name-0").textContent = "Player 1";
-document.getElementById("name-1").textContent = "Player 2";
+document.getElementById("name-0").textContent = "Usnii uher";
+document.getElementById("name-1").textContent = "Nyalh Tugal";
 
 document.querySelector(".player-0-panel" ).classList.remove("winner");
 document.querySelector(".player-1-panel" ).classList.remove("winner");
@@ -46,8 +46,15 @@ diceDom.style.display = "none";
 // }
 document.querySelector(".btn-roll").addEventListener("click", function() {
   // 1 - 6 доторх санамсаргүй нэг тоо гаргаж авна
-  if (isNewGame) diceNumber = Math.floor(Math.random() * 6) + 1;
-  
+  if (isNewGame){
+    if(activePlayer == 0) { 
+      diceNumber = Math.floor(Math.random() * 5) + 2;
+    }
+    else{
+      diceNumber = Math.floor(Math.random() * 6) + 1;
+    }
+
+    
     // var diceNumber = Math.floor(Math.random() * 6) + 1;
 
   // Шооны зургийг вэб дээр гаргаж ирнэ.
@@ -64,10 +71,10 @@ document.querySelector(".btn-roll").addEventListener("click", function() {
   } else {
         switchToNextPlayer();
     }
-  // }
-  // else{
-  //   alert("GAME IS OVER, PLEASE START NEW GAME")
-  // }
+  }
+  else{
+    alert("GAME IS OVER, PLEASE START NEW GAME")
+  }
 }); 
 document.querySelector(".btn-hold").addEventListener("click", function(){
 if(isNewGame){
@@ -85,9 +92,9 @@ if(isNewGame){
         switchToNextPlayer();
     }
 }
-// else{
-//     alert("GAME IS OVER, PLEASE START NEW GAME")
-// }
+else{
+    alert("GAME IS OVER, PLEASE START NEW GAME")
+}
     
 })
 
